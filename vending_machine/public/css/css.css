@@ -1,0 +1,65 @@
+@charset "utf-8";
+*{
+   margin: 0 ;
+   padding: 0;
+   box-sizing:border-box ;
+}
+
+.wrap{
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid;
+    height: 800px;
+    border-radius: 20px;
+    padding: 30px 0;
+}
+
+.drinklist{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 20px 0;
+}
+.drink-box{
+    text-align: center;
+}
+.drink-img{
+    height: 300px;
+}
+.drink-name{}
+.drink-price{}
+.change{
+    width: 35px; 
+    height: 35px; 
+    background: #000; 
+    border-radius: 50%;
+    margin: 0 auto;;
+}
+
+
+.money_section{
+    width: 25%;
+    margin: 50px auto;
+}
+.display_board{
+    padding: 20px;;
+    border:1px solid #000;
+    text-align: right;
+    letter-spacing: 10px;
+}
+.btn_section{
+    display: flex;
+    justify-content: space-between;
+}
+.btn_section button{
+    cursor: pointer;
+    outline: none;
+    background: none;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+

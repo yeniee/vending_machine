@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/css.css">
+</head>
+<body>
+    <div class="wrap">     
+        <div class="drinklist"></div><!--음료수-->            
+            <div class="money_section">
+                <div class="display_board"></div><!--잔액을 알려줌-->
+                <div class="btn_section">
+                    <button type="button" value="50" class="moneybtn" id="m50">50원</button>
+                    <button type="button" value="100" class="moneybtn" id="m100">100원</button>
+                    <button type="button" value="500" class="moneybtn" id="m500">500원</button>
+                    <button type="button" value="1000" class="moneybtn" id="m1000">1000원</button>
+                    <button type="button"  onclick="changeMoney()">거스름돈 받기</button>
+                </div>
+                
+            </div>
+        
+
+    </div><!--wrap-->
+    <script src="js/js.js"></script>
+
+
+
+
+</body>
+</html>   
+ <!--
+    음료수 = [{ "음료수 이름" : "콜라" , "가격 : 1.000원" , "수량" : "10개" , "이미지 : 콜라이미지"}]
+0) 금액을 입력하지 않고 음료수 버튼을 누르면 "금액을 넣어주세요" 하고 알려주기
+    0-1) 금액을 넣고 그 금액을 살수 있는 음료수만 표시해두기 빨간불..뭐 이런거..
+
+
+1) 원하는 음료수를 누른다.
+    if) 음료수의 금액 > 입력한 돈 "잔액이 부족합니다"
+    else if) 음료수의 금액 < 입력한 돈 {일단 기다림}
+
+3) 원하는 음료수를 다 고른 후 "거스름돈 받기" 누르면 남은 금액 반환
+
+4) 수량이 없는 음료수는 매진 처리
+
+        // let displayBoard = document.querySelector(".display_board").innerText; // 자판기 금액 가져옴
+        //     console.log("displayBoard : ")
+        //     console.log(displayBoard) // 확인
+        // let NumberCheck = /[^0-9]/g // 0~9까지의 모든 숫자            
+        // let result = displayBoard.replace(NumberCheck,""); // 숫자만 추출한 결과값
+        //     console.log("숫자만 추출함 : ")
+        //     console.log(result) //확인
+
+
+-->
