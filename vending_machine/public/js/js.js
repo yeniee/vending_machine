@@ -1,11 +1,11 @@
 //0. 음료수 저장 
-            // 1.음료수 이름  2.가격  3.수량  4.이미지
-            let  drinkArray = [
-                { drinkname : "밀키스", price : "1000", count : 10, drinkimg : "drink_01.jpg" },    
-                { drinkname : "커피", price : "1500", count : 10, drinkimg : "drink_02.jpg" },
-                { drinkname : "식혜", price : "1200", count : 10, drinkimg : "drink_03.jpg"},
-                { drinkname : "코코팜", price : "1900", count : 10, drinkimg : "drink_04.png"}
-            ];
+// 1.음료수 이름  2.가격  3.수량  4.이미지
+let  drinkArray = [
+    { drinkname : "밀키스", price : "1000", count : 10, drinkimg : "drink_01.jpg" },    
+    { drinkname : "커피", price : "1500", count : 10, drinkimg : "drink_02.jpg" },
+    { drinkname : "식혜", price : "1200", count : 10, drinkimg : "drink_03.jpg"},
+    { drinkname : "코코팜", price : "1900", count : 10, drinkimg : "drink_04.png"}
+];
 //console.log(drinkArray) ;        
 let drinkBox = ""; // 음료수 리스트를 받는 박스 선언
 
@@ -15,10 +15,7 @@ drinkList(); //음료수 리스트 함수선언
 function drinkList(){
     //console.log(drinkArray);
     for(let i=0; i<drinkArray.length; i++){
-    //console.log(drinkArray[i]);
-    //console.log(drinkArray.length)
-        let drink = drinkArray[i];        
-        //console.log(drink.drinkname);        
+        let drink = drinkArray[i];            
         drinkBox += 
             '<div onclick="clickDrink('+i+')" class="drink-box">'+
                 '<img src="img/'+drink.drinkimg+'" class="drink-img">'+
@@ -35,7 +32,7 @@ function drinkList(){
 
 let coinbox = 0; //현재 금액상태 처음은 0원
 //console.log(coinbox) // 확인
-//console.log(typeof(coinbox)) // type확인       
+//console.log(typeof(coinbox)) // type확인     
 
 document.querySelector(".display_board").innerHTML = coinbox + "원";//자판기에 0원이라고 명시함.
 //console.log(coinbox);
@@ -71,15 +68,12 @@ function targetMoney(e){ // 클릭한 금액을
     // 금액에 따른 컬러변경 함수;
 // 금액을 입력하지 않고 음료수 버튼을 누르면 "금액을 넣어주세요" 하고 알려주기
 function clickDrink(i){
-    //console.log(drinkArray[i]);  
-    //console.log(drinkArray[i].price);            
+        
     if(coinbox==0){alert("돈을 넣어주세요"); return;} // 만약에 돈을 넣지 않고 음료수 버튼을 클릭할 시     
     else if(coinbox >= drinkArray[i].price && drinkArray[i].count!=0) { // 만약에 넣은금액이 음료수 값보다 크고, 음료수의 수량이 0이 아니면
-        //console.log("구매가능~");                  
-        //console.log(drinkArray[i].count) // 처음 수량    
+  
         drinkArray[i].count = drinkArray[i].count -1; // 음료수 수량에서 1감소
-        //console.log(drinkArray[i].count)// 확인   
-        //console.log(coinbox - drinkArray[i].price);                
+              
         let result = coinbox - drinkArray[i].price; // 자판기금액에서 음료수 값을 뺌
         //console.log(result)
         coinbox = result;                
@@ -94,31 +88,27 @@ function clickDrink(i){
     }
     else if(drinkArray[i].count == 0){ // 만약에 음료수의 수량이 0이면                
         alert(drinkArray[i].drinkname + " 매진입니다.");  
-        colorChange(); 
-                  
+        return;                  
     }            
 }
 
 
 
 let change = document.querySelectorAll(".change");
-function colorChange(){    
-    for(let i=0; i<change.length; i++){
-        for(let j=0; j<drinkArray.length; j++){            
-            if(coinbox>=drinkArray[i].price && drinkArray[j].count > 0){
-                //console.log("가능~")
+function colorChange(){     
+        for(let i=0; i<drinkArray.length; i++){            
+            if(coinbox>=drinkArray[i].price && drinkArray[i].count > 0){                
                 change[i].style.backgroundColor = "blue"                
             }// if end
-            else if(coinbox<drinkArray[j].price && drinkArray[j].count > 0){
+            else if(coinbox<drinkArray[i].price && drinkArray[i].count > 0){
                 change[i].style.backgroundColor = "black"                
             }//else if end          
-            else if(drinkArray[j].count == 0 ){ // 만약에 수량이 0이면 
+            else if(drinkArray[i].count == 0 ){ // 만약에 수량이 0이면 
                 //console.log(drinkArray[j].drinkname + "매진~")
-                change[i].style.backgroundColor = "red"; // 빨간색으로 표시하는건데...왜 안되는걸까?
-                
+                //change[i].style.backgroundColor = "red"; // 수량이 0이면                
+                change[i].parentElement.classList.add("soldout")
             }//
-        }// for end
-    }//for end    
+        }// for end    
 }//function colorChange end
 
 function changeMoney(){ //거스름돈 돌려주기
@@ -136,4 +126,3 @@ function changeMoney(){ //거스름돈 돌려주기
 
 
 
-// 매진이면 colorchage 빨간색으로 변경하기

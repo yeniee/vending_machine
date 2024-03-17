@@ -26,6 +26,9 @@
 .drink-box{
     text-align: center;
 }
+.drink-box.soldout{
+    filter: grayscale(1);
+}
 .drink-img{
     height: 300px;
 }
